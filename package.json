@@ -1,0 +1,11 @@
+{
+  "name": "devops-refresher-app",
+  "version": "1.0.0",
+  "description": "High-performance microservice for Docker & AWS ECS refresher",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "author": "Sourav",
+  "license": "MIT"
+}
