@@ -162,13 +162,13 @@ Running `ps -ef | grep app.js` directly on the parent EC2 host machine reveals t
 To keep my deployment configurations highly optimized, I re-verified the exact behavior of these three critical instruction pairs:
 
 ### 📂 COPY vs ADD (Asset Injection)
-*   **`COPY`:** The standard choice for 99% of tasks. It simply clones files or directories from the local build context straight into the image layer.
-*   **`ADD`:** Includes "magic" features like auto-extracting local tarballs/zip files or fetching assets from remote URLs. Best avoided unless explicitly unpacking a `.tar.gz` bundle.
+- **`COPY`:** The standard choice for 99% of tasks. It simply clones files or directories from the local build context straight into the image layer.
+- **`ADD`:** Includes "magic" features like auto-extracting local tarballs/zip files or fetching assets from remote URLs. Best avoided unless explicitly unpacking a `.tar.gz` bundle.
 
 ### ⚙️ RUN vs CMD (Execution Lifecycle)
-*   **`RUN` (Build Time):** Executes commands during the image creation phase (e.g., `npm install`). The results are permanently baked into the static image layers.
-*   **`CMD` (Run Time):** Defines the default process that triggers *only* when the container boots up. It adds zero weight to the image layers.
+- **`RUN` (Build Time):** Executes commands during the image creation phase (e.g., `npm install`). The results are permanently baked into the static image layers.
+- **`CMD` (Run Time):** Defines the default process that triggers *only* when the container boots up. It adds zero weight to the image layers.
 
 ### 🏁 CMD vs ENTRYPOINT (Container Intent)
-*   **`ENTRYPOINT` (The Executable Core):** Locks in the main command that the container *must* run upon booting, effectively turning the container into a dedicated binary.
-*   **`CMD` (The Overridable Parameter):** Acts as the default argument array passed into the `ENTRYPOINT`. It can be easily overridden at runtime via `docker run <image> <new-args>`.
+- **`ENTRYPOINT` (The Executable Core):** Locks in the main command that the container *must* run upon booting, effectively turning the container into a dedicated binary.
+- **`CMD` (The Overridable Parameter):** Acts as the default argument array passed into the `ENTRYPOINT`. It can be easily overridden at runtime via `docker run <image> <new-args>`.
