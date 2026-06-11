@@ -169,6 +169,9 @@ To keep my deployment configurations highly optimized, I re-verified the exact b
 - **`RUN` (Build Time):** Executes commands during the image creation phase (e.g., `npm install`). The results are permanently baked into the static image layers.
 - **`CMD` (Run Time):** Defines the default process that triggers *only* when the container boots up. It adds zero weight to the image layers.
 
+```
+
+
 ### 🏁 CMD vs ENTRYPOINT (Container Intent)
 - **`ENTRYPOINT` (The Executable Core):** Locks in the main command that the container *must* run upon booting, effectively turning the container into a dedicated binary.
 - **`CMD` (The Overridable Parameter):** Acts as the default argument array passed into the `ENTRYPOINT`. It can be easily overridden at runtime via `docker run <image> <new-args>`.
